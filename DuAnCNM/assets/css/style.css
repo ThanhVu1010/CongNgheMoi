@@ -1,0 +1,238 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+html,body{
+    display: grid;
+    height: 100%;
+    place-items: center;
+}
+
+::selection{
+    color: #fff;
+    background: #007bff;
+}
+
+::-webkit-scrollbar{
+    width: 3px;
+    border-radius: 25px;
+}
+::-webkit-scrollbar-track{
+    background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb{
+    background: #ddd;
+}
+::-webkit-scrollbar-thumb:hover{
+    background: #ccc;
+}
+
+.wrapper{
+    width: 370px;
+    background: #fff;
+    border-radius: 5px;
+    border: 1px solid lightgrey;
+    border-top: 0px;
+    
+}
+.wrapper .title{
+    background: #007bff;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 60px;
+    text-align: center;
+    border-bottom: 1px solid #e60000;
+    border-radius: 5px 5px 0 0;
+}
+.wrapper .form{
+    padding: 20px 15px;
+    min-height: 350px;
+    max-height: 400px;
+    overflow-y: auto;
+}
+.wrapper .form .inbox{
+    width: 100%;
+    display: flex;
+    align-items: baseline;
+}
+.wrapper .form .user-inbox{
+    justify-content: flex-end;
+    margin: 13px 0;
+}
+.wrapper .form .inbox .icon{
+    height: 40px;
+    width: 40px;
+    color: #fff;
+    text-align: center;
+    line-height: 40px;
+    border-radius: 50%;
+    font-size: 18px;
+    background: #ff0000;
+}
+.wrapper .form .inbox .msg-header{
+    max-width: 53%;
+    margin-left: 10px;
+}
+.form .inbox .msg-header p{
+    color: #fff;
+    background: #007bff;
+    border-radius: 10px;
+    padding: 8px 10px;
+    font-size: 14px;
+    word-break: break-all;
+}
+.form .user-inbox .msg-header p{
+    color: #333;
+    background: #efefef;
+}
+.wrapper .typing-field{
+    display: flex;
+    height: 60px;
+    width: 100%;
+    align-items: center;
+    justify-content: space-evenly;
+    background: #efefef;
+    border-top: 1px solid #d9d9d9;
+    border-radius: 0 0 5px 5px;
+}
+.wrapper .typing-field .input-data{
+    height: 40px;
+    width: 335px;
+    position: relative;
+}
+.wrapper .typing-field .input-data input{
+    height: 100%;
+    width: 100%;
+    outline: none;
+    border: 1px solid transparent;
+    padding: 0 80px 0 15px;
+    border-radius: 3px;
+    font-size: 15px;
+    background: #fff;
+    transition: all 0.3s ease;
+}
+.typing-field .input-data input:focus{
+    border-color: rgba(0,123,255,0.8);
+}
+.input-data input::placeholder{
+    color: #999999;
+    transition: all 0.3s ease;
+}
+.input-data input:focus::placeholder{
+    color: #bfbfbf;
+}
+.wrapper .typing-field .input-data button{
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    height: 30px;
+    width: 65px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    outline: none;
+    opacity: 0.5;
+    pointer-events: none;
+    border-radius: 3px;
+    background: #007bff;
+    border: 1px solid #007bff;
+    transform: translateY(-50%);
+    transition: all 0.3s ease;
+}
+.wrapper .typing-field .input-data input:valid ~ button{
+    opacity: 1;
+    pointer-events: auto;
+}
+.typing-field .input-data button:hover{
+    background: #006fef;
+}
+
+#chatbot-toggler {
+    position: fixed;
+    right: 20px;
+    bottom: 34px;
+    height: 50px;
+    width: 50px; 
+    color: #fff;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    outline: none;
+    background: #724ae8;
+    border-radius: 50%;
+}
+
+
+/* Style for message icon */
+#message-icon {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    cursor: pointer;
+    z-index: 1000; 
+}
+
+/* Style for chatbot dialog box */
+#chatbot-dialog {
+    width: 300px;
+    height: 400px;
+    position: fixed; /* Change to fixed to keep it positioned relative to the viewport */
+    bottom: 80px; /* Adjust bottom property to lift it above the message icon */
+    right: 20px; /* Align it to the right edge */
+    background-color: white;
+    border-radius: 10px; /* Optional: add border-radius for better aesthetics */
+    display: none;
+    z-index: 1000;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Optional: add shadow for better depth */
+}
+
+
+
+/* Close button style */
+.close-btn {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    background-color: #f44336; /* Change color to red for better visibility */
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white; /* Ensure the icon is visible */
+}
+
+.wrapper .typing-field .input-data button {
+    opacity: 1; /* Set opacity to 1 to make it fully visible */
+    pointer-events: auto; /* Ensure it's clickable */
+}
+
+/* Media query for smaller devices */
+@media (max-width: 480px) {
+    #chatbot-dialog {
+        width: 95%; /* Make the chatbot dialog wider on small screens */
+        bottom: 10px; /* Adjust bottom position to create space for typing */
+        right: 2.5%; /* Center the dialog on small screens */
+    }
+}
+
+@keyframes blink {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+.message-icon-blink {
+    animation: blink 1s infinite;
+}

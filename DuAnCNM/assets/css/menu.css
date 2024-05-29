@@ -1,0 +1,25 @@
+/* CSS cho các tab */
+.tab-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+}
+
+.tab-item {
+  margin-right: 10px; /* Khoảng cách giữa các tab */
+}
+
+.tab-link {
+  text-decoration: none;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  color: #333;
+}
+
+.tab-link.is_active {
+  background-color: #007bff; /* Màu nền cho tab được chọn */
+  color: #fff;
+  border-color: #007bff;
+}
